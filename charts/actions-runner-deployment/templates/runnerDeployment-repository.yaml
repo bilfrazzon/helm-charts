@@ -1,0 +1,51 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: {{ .Values.app_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app_name }}
+    spec:
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - name: dockerhub
+        secret:
+          secretName: dockerhub
+          defaultMode: 0666
+          items:
+            - key: .dockerconfigjson
+              path: config.json
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - {{ .Values.app_name }}
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      repository: {{ .Values.repository }}
+      env: []
+      image: {{ .Values.image_repo }}:{{ .Values.image_tag }}
+      labels:
+      {{- if .Values.runner_labels }}
+      {{- range $key := .Values.runner_labels }}
+        - {{ $key }}
+      {{- end -}}
+      {{- end }}
+      resources:
+        requests:
+          cpu: {{ .Values.cpu_request }}
+          memory: {{ .Values.mem_request }}
+      volumeMounts:
+      - name: dockerhub
+        readOnly: false
+        mountPath: /home/runner/.docker/config.json
+        subPath: config.json

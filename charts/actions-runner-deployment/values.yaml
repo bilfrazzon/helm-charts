@@ -1,0 +1,15 @@
+####    Generic     ####
+app_name: runner
+namespace: actions-runner-system
+
+####   Deployment   ####
+image_repo: "summerwind/actions-runner" # later we need to bring it to ECR
+image_tag: "v2.283.3-ubuntu-20.04-b01e193"
+cpu_request: 1500m
+mem_request: 1500Mi
+runner_labels:
+  - loadTest-jmeter
+
+####       HPA      ####
+hpa_minReplicas: "1"
+hpa_maxReplicas: "5"
