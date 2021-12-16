@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "springboot-example.fullname" . }}
+  name: {{ include "pagarme-api.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "springboot-example.name" . }}
-    helm.sh/chart: {{ include "springboot-example.chart" . }}
+    app.kubernetes.io/name: {{ include "pagarme-api.name" . }}
+    helm.sh/chart: {{ include "pagarme-api.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "springboot-example.name" . }}
+      app.kubernetes.io/name: {{ include "pagarme-api.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "springboot-example.name" . }}
+        app.kubernetes.io/name: {{ include "pagarme-api.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
