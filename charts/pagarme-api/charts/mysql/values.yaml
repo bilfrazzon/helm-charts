@@ -7,7 +7,7 @@ imageTag: "5.6"
 ## Specify password for root user
 ##
 ## Default: random 10 character string
-mysqlRootPassword: r00t
+mysqlRootPassword: root
 
 ## Create a database user
 ##
@@ -21,7 +21,7 @@ mysqlRootPassword: r00t
 
 ## Create a database
 ##
-mysqlDatabase: springboot_mysql_example
+mysqlDatabase: cliente
 
 ## Specify an imagePullPolicy (Required)
 ## It's recommended to change this to 'Always' if the image tag is 'latest'

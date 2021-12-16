@@ -1,5 +1,5 @@
 apiVersion: v1
 appVersion: "1.0"
 description: Pagarme Api
-name: pagarme-api
-version: 0.2.0
+name: pagarme
+version: 0.3.0
