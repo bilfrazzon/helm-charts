@@ -1,5 +1,15 @@
 apiVersion: v1
 entries:
+  pagarme-api:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2021-12-16T14:01:01.525939972Z"
+    description: Pagarme Api
+    digest: 0e28edaefdfd163ef478e2e99d4de1076840f4b46f03d99d62dd397333d5c5e4
+    name: pagarme-api
+    urls:
+    - https://github.com/bilfrazzon/helm-charts/releases/download/pagarme-api-0.1.0/pagarme-api-0.1.0.tgz
+    version: 0.1.0
   runner-deployment:
   - apiVersion: v2
     appVersion: 1.16.0
